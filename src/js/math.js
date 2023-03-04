@@ -16,16 +16,22 @@ export default class Math1 {
   }
 
   get attack() {
+    if (this._stoned === true) {
+      this._attack -= Math.log2(this.distance) * 5;
+    }
+
     return this._attack;
   }
 
   set stoned(stoned) {
     if (stoned === true) {
-      this._attack = this.attack - Math.log2(this.distance) * 5;
+      this._stoned = true;
+    } else {
+      delete this._stoned;
     }
   }
 
   get stoned() {
-    return this._attack;
+    return this._stoned;
   }
 }
